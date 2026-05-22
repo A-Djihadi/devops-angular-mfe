@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  shell:
+    build:
+      context: ./shell-app
+    image: ghcr.io/a-djihadi/devops-angular-shell:latest
+    container_name: angular-shell
+    ports:
+      - "4200:80"
+    environment:
+      API_BASE_URL: http://localhost:8080
+      REMOTE_APP_URL: http://localhost:4201/remoteEntry.js
+    depends_on:
+      - remote
+
+  remote:
+    build:
+      context: ./remote-app
+    image: ghcr.io/a-djihadi/devops-angular-remote:latest
+    container_name: angular-remote
+    ports:
+      - "4201:80"
+
+networks:
+  default:
+    name: devops-network
+    external: true
