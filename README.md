@@ -74,6 +74,20 @@ cd remote-app && npm ci && npm start
 cd shell-app && npm ci && npm start
 ```
 
+### Build de production (sans Docker)
+
+```bash
+# Shell app
+cd shell-app && npm ci && npm run build
+
+# Remote app
+cd remote-app && npm ci && npm run build
+```
+
+La sortie est générée dans `shell-app/dist/shell-app` et `remote-app/dist/remote-app`.
+
+Le CI GitHub Actions exécute en plus `npm run lint` et `npm run test` sur chaque app.
+
 ---
 
 ## Pattern d'injection de configuration à runtime
