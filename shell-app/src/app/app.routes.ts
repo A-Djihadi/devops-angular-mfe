@@ -1,5 +1,6 @@
+import { Type } from '@angular/core';
 import { Routes } from '@angular/router';
-import { loadRemoteModule } from '@angular-architects/module-federation';
+import { loadRemoteModule } from './core/remote-loader';
 
 export const routes: Routes = [
   {
@@ -13,13 +14,11 @@ export const routes: Routes = [
       import('./core/dashboard/dashboard.component').then((m) => m.DashboardComponent),
   },
   {
-    // Route vers le micro frontend remote
+    // Route vers le micro frontend remote, chargé dynamiquement à l'exécution
     path: 'remote',
-    loadChildren: () =>
-      loadRemoteModule({
-        type: 'module',
-        remoteEntry: 'http://localhost:4201/remoteEntry.js',
-        exposedModule: './Module',
-      }).then((m) => m.RemoteAppModule),
+    loadComponent: () =>
+      loadRemoteModule<{ RemoteComponent: Type<unknown> }>('./Component').then(
+        (m) => m.RemoteComponent,
+      ),
   },
 ];

@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build shell image
-        run: docker build -t shell-app:ci ./shell-app
+        run: docker build -f shell-app/Dockerfile -t shell-app:ci .
 
       - name: Build remote image
-        run: docker build -t remote-app:ci ./remote-app
+        run: docker build -f remote-app/Dockerfile -t remote-app:ci .

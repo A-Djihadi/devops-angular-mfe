@@ -3,11 +3,8 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 module.exports = withModuleFederationPlugin({
   name: 'shell',
 
-  remotes: {
-    // Le remote est chargé dynamiquement depuis l'environnement
-    // Voir src/app/core/remote-loader.ts
-    remoteApp: 'remoteApp@http://localhost:4201/remoteEntry.js',
-  },
+  // The remote entry URL is resolved at runtime (see src/app/core/remote-loader.ts)
+  // so the same image can be deployed to any environment without a rebuild.
 
   shared: {
     ...shareAll({

@@ -1,0 +1,19 @@
+# Git metadata and CI
+.git
+.github
+.gitignore
+.dockerignore
+
+# Node modules (reinstalled inside the image via npm ci)
+**/node_modules
+
+# Angular build output and caches
+**/dist
+**/.angular
+**/coverage
+
+# Editor / OS noise
+**/.DS_Store
+**/Thumbs.db
+**/.idea
+**/.vscode

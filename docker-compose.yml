@@ -1,9 +1,8 @@
-version: "3.9"
-
 services:
   shell:
     build:
-      context: ./shell-app
+      context: .
+      dockerfile: shell-app/Dockerfile
     image: ghcr.io/a-djihadi/devops-angular-shell:latest
     container_name: angular-shell
     ports:
@@ -16,7 +15,8 @@ services:
 
   remote:
     build:
-      context: ./remote-app
+      context: .
+      dockerfile: remote-app/Dockerfile
     image: ghcr.io/a-djihadi/devops-angular-remote:latest
     container_name: angular-remote
     ports:
